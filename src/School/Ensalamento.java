@@ -53,9 +53,6 @@ public class Ensalamento {
             System.out.println("Nome: " + studentName);
             System.out.println("Curso: " + studentCourse.getCourseName());
             System.out.println("Materias: " + getSubjectsNames(studentSubjects));
-
-
-            students[i].getCourse().getSubjects();
             System.out.println("-------------------------\n");
         }
     }
