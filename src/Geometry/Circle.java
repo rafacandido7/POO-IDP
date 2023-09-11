@@ -1,31 +1,34 @@
 package Geometry;
 
-public class Circle {
-    private double radious;
+import java.util.Scanner;
 
-    public void setRadious(double radious) {
-        this.radious = radious;
+public class Circle {
+    private final Scanner scanner = new Scanner(System.in);
+    private final double radious;
+    private final double circumference;
+    private final double surfaceArea;
+
+    public Circle() {
+        this.radious = setRadious();
+        this.circumference = setCircumference();
+        this.surfaceArea = setSurfaceArea();
     }
-    private double getCircumference() {
+
+    private double setRadious() {
+        System.out.println("Digite o tamanho do raio:");
+        return scanner.nextDouble();
+    }
+    private double setCircumference() {
         return 2*Math.PI*this.radious;
     }
-
-    private double getSurfaceArea() {
+    public double getCircumference() {
+        return this.circumference;
+    }
+    private double setSurfaceArea() {
         return Math.PI*Math.pow(this.radious, 2);
     }
-
-    public void getCircleInfos() {
-        System.out.println("----------------------------------");
-
-        String showRadious = "Raio do círculo: %f".formatted(this.radious);
-        System.out.println(showRadious);
-
-        String circumference = "Circunferência do círculo: %f".formatted(this.getCircumference());
-        System.out.println(circumference);
-
-        String surfaceArea = "Área do círculo: %f".formatted(this.getSurfaceArea());
-        System.out.println(surfaceArea);
-
-        System.out.println("----------------------------------");
+    public double getSurfaceArea() {
+        return this.surfaceArea;
     }
+
 }

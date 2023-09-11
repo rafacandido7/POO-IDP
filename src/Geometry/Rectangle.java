@@ -1,33 +1,42 @@
 package Geometry;
 
-public class Rectangle {
-    private double width;
-    private double height;
+import java.util.Scanner;
 
-    public void setSides(double width, double height) {
-        this.width = width;
-        this.height = height;
+public class Rectangle {
+    private final Scanner scanner = new Scanner(System.in);
+    private final double width;
+    private final double height;
+    private final double perimetrer;
+    private final double surfaceArea;
+
+    public Rectangle() {
+        this.width = this.setWidth();
+        this.height = this.setHeight();
+        this.perimetrer = setPerimetrer();
+        this.surfaceArea = setSurfaceArea();
     }
-    private double getPerimetrer() {
+
+    private double setWidth() {
+        System.out.println("Digite o tamanho da base do retangulo:");
+        return scanner.nextDouble();
+    }
+    private double setHeight() {
+        System.out.println("Digite o tamanho da altura do retangulo:");
+        return scanner.nextDouble();
+    }
+    private double setPerimetrer() {
         return 2*(this.width + this.height);
     }
 
-    private double getSurfaceArea() {
+    public double getPerimetrer() {
+        return this.perimetrer;
+    }
+
+    private double setSurfaceArea() {
         return this.height * this.width;
     }
 
-    public void getRectangleInfos() {
-        System.out.println("----------------------------------");
-
-        String showSide = "Lados do retangulo: %f %f".formatted(this.width, this.height);
-        System.out.println(showSide);
-
-        String perimetrer = "Perímetro do retangulo: %f".formatted(this.getPerimetrer());
-        System.out.println(perimetrer);
-
-        String surfaceArea = "Área do retangulo: %f".formatted(this.getSurfaceArea());
-        System.out.println(surfaceArea);
-
-        System.out.println("----------------------------------");
+    public double getSurfaceArea() {
+        return this.surfaceArea;
     }
 }

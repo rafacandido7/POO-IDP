@@ -1,31 +1,36 @@
 package Geometry;
 
-public class Square {
-    private double side;
+import java.util.Scanner;
 
-    public void setSide(double side) {
-        this.side = side;
+public class Square {
+    private final Scanner scanner = new Scanner(System.in);
+    private final double side;
+    private final double perimetrer;
+    private final double surfaceArea;
+
+    public Square() {
+        this.side = this.setSide();
+        this.perimetrer = setPerimetrer();
+        this.surfaceArea = setSurfaceArea();
     }
-    private double getPerimetrer() {
+
+    private double setSide() {
+        System.out.println("Digite o tamanho do lado do quadrado:");
+        return scanner.nextDouble();
+    }
+    private double setPerimetrer() {
         return 4*this.side;
     }
+    public double getPerimetrer() {
+        return this.perimetrer;
+    }
 
-    private double getSurfaceArea() {
+    private double setSurfaceArea() {
         return Math.pow(this.side, 2);
     }
 
-    public void getSquareInfos() {
-        System.out.println("----------------------------------");
-
-        String showSide = "Lado do quadrado: %f".formatted(this.side);
-        System.out.println(showSide);
-
-        String perimetrer = "Perímetro do quadrado: %f".formatted(this.getPerimetrer());
-        System.out.println(perimetrer);
-
-        String surfaceArea = "Área do quadrado: %f".formatted(this.getSurfaceArea());
-        System.out.println(surfaceArea);
-
-        System.out.println("----------------------------------");
+    public double getSurfaceArea() {
+        return this.surfaceArea;
     }
+
 }

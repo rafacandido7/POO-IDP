@@ -1,17 +1,40 @@
 package Geometry;
 
+import java.util.Scanner;
+
 public class Triangle {
+    private final Scanner scanner = new Scanner(System.in);
     private double sideA;
     private double sideB;
     private double sideC;
+    private final double perimetrer;
+    private final double surfaceArea;
 
-    public void getSides(double a, double b, double c) {
-        this.sideA = a;
-        this.sideB = b;
-        this.sideC = c;
+
+    public Triangle() {
+        this.sideA = this.getSideA();
+        this.sideB = this.getSideB();
+        this.sideC = this.getSideC();
+        this.perimetrer = this.setPerimetrer();
+        this.surfaceArea = this.setSurfaceArea();
     }
 
-    private boolean verifyTriangle() {
+    private double getSideA() {
+        System.out.println("Digite o primeiro lado do base triangulo:");
+        return scanner.nextDouble();
+    }
+
+    private double getSideB() {
+        System.out.println("Digite o segundo lado do base triangulo:");
+        return scanner.nextDouble();
+    }
+
+    private double getSideC() {
+        System.out.println("Digite o terceiro lado do base triangulo:");
+        return scanner.nextDouble();
+    }
+
+    public boolean verifyTriangle() {
         boolean firstRequirement = this.sideA + this.sideB > this.sideC;
         boolean secondRequirement = this.sideA + this.sideC > this.sideB;
         boolean thirdRequirement = this.sideB + this.sideC > this.sideA;
@@ -25,36 +48,31 @@ public class Triangle {
             System.out.println(errorMessage);
 
             System.out.println("----------------------------------");
-
         }
 
         return isTriangle;
     }
 
-    private double getPerimetrer() {
+    private double setPerimetrer() {
         return this.sideA + this.sideB + this.sideC;
+    }
+    public double getPerimetrer() {
+        if (this.verifyTriangle()) {
+            return this.perimetrer;
+        }
+        return 0;
     }
 
     // Herão's Formula
-    private double getSurfaceArea() {
+    private double setSurfaceArea() {
         double semiPerimetrer = this.getPerimetrer()/2;
-        return this.verifyTriangle() ? Math.sqrt(semiPerimetrer*(semiPerimetrer - this.sideA)*(semiPerimetrer - this.sideB)*(semiPerimetrer - this.sideC)) : 0;
-    }
-
-    public void getTriangleInfos() {
         if (this.verifyTriangle()) {
-            System.out.println("----------------------------------");
-
-            String triangle = "Triângulo com os lados %f %f %f".formatted(this.sideA, this.sideB, this.sideC);
-            System.out.println(triangle);
-
-            String showPerimetrer = "Perimetro do triângulo: %f".formatted(this.getPerimetrer());
-            System.out.println(showPerimetrer);
-
-            String showSurfaceArea = "Área do triângulo: %f".formatted(this.getSurfaceArea());
-            System.out.println(showSurfaceArea);
-
-            System.out.println("----------------------------------");
+            return Math.sqrt(semiPerimetrer*(semiPerimetrer - this.sideA)*(semiPerimetrer - this.sideB)*(semiPerimetrer - this.sideC));
         }
+        return 0;
     }
+    public double getSurfaceArea() {
+        return this.surfaceArea;
+    }
+
 }
