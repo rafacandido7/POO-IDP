@@ -11,5 +11,6 @@
     <orderEntry type="library" exported="" name="json-20200518" level="project" />
     <orderEntry type="library" name="json-20200518 (1)" level="project" />
     <orderEntry type="library" name="snakeyaml-2.2" level="project" />
+    <orderEntry type="library" name="h2-2.2.222" level="project" />
   </component>
 </module>
